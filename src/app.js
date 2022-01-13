@@ -2,13 +2,12 @@ import pris from "@prisma/client";
 import express from "express";
 import cors from "cors";
 
-const { Prisma, PrismaClient } = pris;
+const { PrismaClient } = pris;
 export const prisma = new PrismaClient();
 export const app = express();
 
 app.use(cors());
 app.use(express.json());
-const port = 3000;
 
 app.post("/list", async (req, res) => {
 	const { title } = req.body;

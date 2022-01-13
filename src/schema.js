@@ -5,18 +5,18 @@ export const typeDefs = gql`
 		lists: [List]!
 	}
 
-  type Mutation {
-    addList(input: AddListInput!): List!
-    deleteList(id: Int!): Boolean!
-    updateList(input: UpdateListInput!): Boolean!
-    addTask(input: AddTaskInput!): Boolean!
-    deleteTask(id: Int!): Boolean!
-    updateTask(input: UpdateTaskDetail!): Boolean!
-  }
+	type Mutation {
+		addList(input: AddListInput!): Boolean!
+		deleteList(id: Int!): Boolean!
+		updateList(input: UpdateListInput!): Boolean!
+		addTask(input: AddTaskInput!): Boolean!
+		deleteTask(id: Int!): Boolean!
+		updateTask(input: UpdateTaskDetail!): Boolean!
+	}
 
-  type Subscription {
-    updateAllList: [List]!
-  }
+	type Subscription {
+		updateAllList: Boolean
+	}
 
 	type Task {
 		id: ID!
@@ -31,27 +31,27 @@ export const typeDefs = gql`
 		tasks: [Task]
 	}
 
-  input AddListInput {
-    title: String!
-  }
+	input AddListInput {
+		title: String!
+	}
 
-  input UpdateListInput {
-    title: String!
-    id: Int!
-  }
+	input UpdateListInput {
+		title: String!
+		id: Int!
+	}
 
-  input AddTaskInput {
-    listId: Int!
-    title: String!
-    description: String
-    completed: Boolean
-  }
+	input AddTaskInput {
+		listId: Int!
+		title: String!
+		description: String
+		completed: Boolean
+	}
 
-  input UpdateTaskDetail {
-    id: Int!
-    listId: Int
-    title: String
-    description: String
-    completed: Boolean
-  }
+	input UpdateTaskDetail {
+		id: Int!
+		listId: Int
+		title: String
+		description: String
+		completed: Boolean
+	}
 `;
