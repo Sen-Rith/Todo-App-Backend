@@ -29,6 +29,13 @@ const server = new ApolloServer({
 		prisma,
 		pubsub,
 	},
+	formatParams: (params) => {
+		const { variables, ...rest } = params;
+		return {
+			variables: omitDeep(variables, "__typename"),
+			...rest,
+		};
+	},
 	plugins: [
 		ApolloServerPluginDrainHttpServer({ httpServer }),
 		{
